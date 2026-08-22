@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMPS3141 Grade Calculator</title>
+
+    <!-- MaVue -->
+    <script type="module" src="https://mavue.mavo.io/mavue.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        input {
+            margin: 5px 0 10px;
+            padding: 6px;
+            width: 120px;
+        }
+
+        button {
+            padding: 8px 14px;
+            cursor: pointer;
+        }
+
+        .result {
+            padding: 15px;
+            background: #f4f4f4;
+            border-radius: 8px;
+        }
+
+        .grade {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+<v-app
+    id="app"
+    data='{
+        "test1": 0,
+        "test2": 0,
+        "homeworks": [0],
+        "project": 0,
+        "finalExam": 0
+    }'
+>
+
+    <h1>CMPS3141 Grade Calculator</h1>
+
+    <!-- TESTS -->
+    <section>
+        <h2>Tests</h2>
+
+        <label>
+            Test 1:<br>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model="test1"
+            >
+        </label>
+
+        <br>
+
+        <label>
+            Test 2:<br>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model="test2"
+            >
+        </label>
+    </section>
+
+    <hr>
+
+    <!-- HOMEWORKS -->
+    <section>
+        <h2>Homeworks</h2>
+
+        <div v-for="(hw, i) in homeworks" :key="i">
+            <label>
+                Homework {{ i + 1 }}:<br>
+                <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    v-model="homeworks[i]"
+                >
+            </label>
+        </div>
+
+        <button @click="homeworks.push(0)">
+            Add Homework
+        </button>
+    </section>
+
+    <hr>
+
+    <!-- PROJECT -->
+    <section>
+        <h2>Project Grade</h2>
+
+        <label>
+            Project:<br>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model="project"
+            >
+        </label>
+    </section>
+
+    <hr>
+
+    <!-- FINAL EXAM -->
+    <section>
+        <h2>Final Exam</h2>
+
+        <label>
+            Final Exam:<br>
+            <input
+                type="number"
+                min="0"
+                max="100"
+                v-model="finalExam"
+            >
+        </label>
+    </section>
+
+    <hr>
+
+    <!-- OUTPUT -->
+    <section class="result">
+        <h2>Projected Final Grade</h2>
+
+        <p class="grade">
+            <strong>{{ projectedGrade }}%</strong>
+        </p>
+
+        <h3>Letter Grade</h3>
+        <p>
+            <strong>{{ letterGrade }}</strong>
+        </p>
+
+        <h3>Breakdown</h3>
+
+        <ul>
+            <li>
+                Tests average:
+                {{ testAverage.toFixed(2) }}%
+            </li>
+
+            <li>
+                Homework average:
+                {{ homeworkAverage.toFixed(2) }}%
+            </li>
+
+            <li>
+                Project:
+                {{ Number(project).toFixed(2) }}%
+            </li>
+
+            <li>
+                Final Exam:
+                {{ Number(finalExam).toFixed(2) }}%
+            </li>
+        </ul>
+    </section>
+
+</v-app>
+
+<script>
+    // Add computed properties to the MaVue app
+    app.computed = {
+
+        testAverage() {
+            const test1 = Number(this.test1) || 0;
+            const test2 = Number(this.test2) || 0;
+
+            return (test1 + test2) / 2;
+        },
+
+        homeworkAverage() {
+            if (!this.homeworks || this.homeworks.length === 0) {
+                return 0;
+            }
+
+            const total = this.homeworks.reduce(
+                (sum, grade) => sum + (Number(grade) || 0),
+                0
+            );
+
+            return total / this.homeworks.length;
+        },
+
+        projectedGrade() {
+            const tests = this.testAverage;
+            const homework = this.homeworkAverage;
+            const project = Number(this.project) || 0;
+            const finalExam = Number(this.finalExam) || 0;
+
+            /*
+             * Current course weighting:
+             *
+             * Tests       = 20%
+             * Homeworks   = 25%
+             * Project     = 25%
+             * Final Exam  = 25%
+             *
+             * NOTE: These add up to 95%.
+             */
+
+            const grade =
+                (tests * 0.20) +
+                (homework * 0.25) +
+                (project * 0.25) +
+                (finalExam * 0.25);
+
+            return grade.toFixed(2);
+        },
+
+        letterGrade() {
+            const grade = Number(this.projectedGrade);
+
+            if (grade >= 95) return "A";
+            if (grade >= 90) return "A-";
+            if (grade >= 85) return "B+";
+            if (grade >= 80) return "B";
+            if (grade >= 75) return "C+";
+            if (grade >= 70) return "C";
+            if (grade >= 65) return "D+";
+            if (grade >= 60) return "D";
+
+            return "F";
+        }
+    };
+</script>
+
+</body>
+</html>

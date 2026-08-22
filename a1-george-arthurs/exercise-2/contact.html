@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alex Ramirez - Contact</title>
+</head>
+<body>
+
+<a href="#main" aria-label="Skip to main content">Skip to main content</a>
+
+<header role="banner">
+    <h1>Contact Alex</h1>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="cv.html">CV</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="main" role="main">
+
+    <section>
+        <h2>Contact Form</h2>
+        <p>Use this form to send a message to Alex.</p>
+
+        <form action="mailto:alex.ramirez@example.com" method="post" enctype="text/plain">
+
+            <div>
+                <label for="subject">Subject:</label><br>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div>
+                <label for="body">Message:</label><br>
+                <textarea id="body" name="body" rows="6" cols="40" required></textarea>
+            </div>
+
+            <div>
+                <button type="submit">Send Message</button>
+                <button type="reset">Clear Form</button>
+            </div>
+
+        </form>
+    </section>
+
+</main>
+
+<footer role="contentinfo">
+    <p>&copy; 2026 Alex Ramirez</p>
+</footer>
+
+</body>
+</html>
