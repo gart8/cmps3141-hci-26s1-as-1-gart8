@@ -1,1 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 1 – Noticing the Design of Everyday Things</title>
 
+  <!-- ⭐ REQUIRED FOR MOBILE TEXT SCALING -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    /* ⭐ Larger base text for smartphones */
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.7;
+      color: #222;
+      font-size: 18px; /* Increased from default */
+    }
+
+    /* ⭐ Larger headings */
+    h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 22px; }
+    h4 { font-size: 20px; }
+
+    h1, h2, h3 {
+      margin-top: 1.4em;
+      margin-bottom: 0.4em;
+    }
+
+    h4 {
+      margin-top: 1em;
+      margin-bottom: 0.3em;
+    }
+
+    p {
+      margin-bottom: 0.8em;
+    }
+
+    figure {
+      margin: 1.2em 0;
+      text-align: center;
+    }
+
+    figcaption {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 0.4em;
+    }
+
+    ul {
+      margin-top: 0.3em;
+      margin-bottom: 1em;
+    }
+
+    /* ⭐ FLEXBOX IMAGE ROW */
+    .img-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .img-block {
+      flex: 1 1 30%;
+      max-width: 30%;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: 4px;
+      border-radius: 6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.15);
+    }
+
+    .object-section {
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #444;
+      display: block;
+      text-align: center;
+      margin-bottom: 4px;
+      font-size: 16px; /* Slightly larger labels */
+    }
+
+    /* ⭐ BREAKPOINT FOR MOBILE + HIGH ZOOM (200%+) */
+    @media (max-width: 600px), (min-resolution: 2dppx) {
+      .img-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .img-block {
+        max-width: 90%;
+        flex: none;
+      }
+
+      /* Larger text on small screens */
+      body {
+        font-size: 20px;
+      }
+
+      h1 { font-size: 34px; }
+      h2 { font-size: 28px; }
+      h3 { font-size: 24px; }
+      h4 { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Assignment 1 – Noticing the Design of Everyday Things</h1>
+  <!-- Student: George Arthurs | OK to share with class: Yes -->
+
+  <h2>Exercise 1: Usability Problems in Everyday Objects</h2>
+  <p>
+    Below are three everyday objects that have usability problems. For each one, I describe the issue,
+    explain how it affects <strong>Learnability</strong>, <strong>Efficiency</strong>, and <strong>Safety</strong>,
+    and give a simple fix.
+  </p>
+
+  <!-- Object 1 -->
+  <div class="object-section">
+    <h3>Object 1 — Wireless Earbuds Case</h3>
+
+    <figure>
+      <div class="img-row">
+
+        <div class="img-block">
+          <span class="label">Top view (lid orientation)</span>
+          <img src="earbud_case_opened.JPG" alt="Earbuds case opened">
+        </div>
+
+        <div class="img-block">
+          <span class="label">Logo visibility (top surface)</span>
+          <img src="earbud_case_showing_logo.JPG" alt="Earbuds case logo">
+        </div>
+
+      </div>
+
+      <figcaption><strong>Figure 1.</strong> Wireless earbuds case showing lid orientation and logo visibility.</figcaption>
+    </figure>
+
+    <h4>Usability Problem</h4>
+    <p>
+      The earbuds case is hard to open because there are no clear clues (signifiers) that show which side is the lid.
+      The logo on the top is very faint, so if the light doesn’t hit it properly, you can’t see it.
+    </p>
+    <p>
+      This makes you flip the case around, guessing which side to open it from. The case also has poor affordance,
+      because its smooth and symmetrical shape does not help users understand how it should be held or opened.
+      Users expect the lid to be obvious, so this design does not match their conceptual model.
+    </p>
+
+    <figure>
+      <div class="img-row">
+
+        <div class="img-block">
+          <span class="label">Both sides of the case (rotated)</span>
+          <img src="earbud_case_rotated.gif" alt="Earbuds case showing both sides">
+        </div>
+
+      </div>
+
+      <figcaption><strong>Figure 2.</strong> Earbuds case rotated to show both sides.</figcaption>
+    </figure>
+
+    <h4>Learnability, Efficiency, Safety</h4>
+    <ul>
+      <li><strong>Learnability:</strong> Users cannot easily tell which side is the lid.</li>
+      <li><strong>Efficiency:</strong> Users waste time rotating the case to figure it out.</li>
+      <li><strong>Safety:</strong> The case can slip or fall while trying to open it.</li>
+    </ul>
+
+    <h4>Fix</h4>
+    <p>
+      Use a higher-contrast color for the logo on the lid, or make the logo more embossed so it’s easier to see.
+    </p>
+  </div>
+
+  <!-- Object 2 -->
+  <div class="object-section">
+    <h3>Object 2 — Ribbed Drinking Glass</h3>
+
+    <figure>
+      <div class="img-row">
+
+        <div class="img-block">
+          <span class="label">Ridge pattern</span>
+          <img src="ribbed_glass_on_table.JPG" alt="Ribbed glass on table">
+        </div>
+
+        <div class="img-block">
+          <span class="label">Grip area when held</span>
+          <img src="ribbed_glass_in_hand.JPG" alt="Ribbed glass held in hand">
+        </div>
+
+      </div>
+
+      <figcaption><strong>Figure 3.</strong> Drinking glass showing vertical ridges.</figcaption>
+    </figure>
+
+    <h4>Usability Problem</h4>
+    <p>
+      The ribbed texture looks like it should help with grip, but the ridges are shallow and become slippery when wet.
+      This gives users the wrong idea about how the glass works.
+    </p>
+    <p>
+      People expect the ridges to provide a strong gripping affordance, but instead the vertical ridges make the glass
+      feel unstable. This does not match the user’s conceptual model of how ribbed glasses should work.
+    </p>
+
+    <h4>Learnability, Efficiency, Safety</h4>
+    <ul>
+      <li><strong>Learnability:</strong> Users expect the ridges to improve grip, but they don’t.</li>
+      <li><strong>Efficiency:</strong> Users have to adjust their grip more carefully.</li>
+      <li><strong>Safety:</strong> The glass can slip very easily from the hand when wet.</li>
+    </ul>
+
+    <h4>Fix</h4>
+    <p>
+      Make the ridges larger and deeper, or add a horizontal strip around the glass so it doesn’t slip down out of the hand.
+    </p>
+  </div>
+
+  <!-- Object 3 -->
+  <div class="object-section">
+    <h3>Object 3 — Vanity Mirror Battery Access</h3>
+
+    <figure>
+      <div class="img-row">
+
+        <div class="img-block">
+          <span class="label">Mirror front (closed)</span>
+          <img src="vanity_mirror.JPG" alt="Mirror closed">
+        </div>
+
+        <div class="img-block">
+          <span class="label">Battery compartment</span>
+          <img src="vanity_mirror_showing_battery_compartment.JPG" alt="Mirror battery compartment">
+        </div>
+
+        <div class="img-block">
+          <span class="label">Rotation notches (edge detail)</span>
+          <img src="vanity_mirror_showing_notches.JPG" alt="Mirror notches">
+        </div>
+
+      </div>
+
+      <figcaption><strong>Figure 4.</strong> Mirror showing battery access mechanism and notches.</figcaption>
+    </figure>
+
+    <h4>Usability Problem</h4>
+    <p>
+      To reach the battery, the user must rotate the entire mirror face and then pry it off. The mirror face is smooth, larger than the hand, and tightly fitted, so both actions are physically difficult.
+    </p>
+    <p>
+      The mirror gives minimal signifiers that it should rotate or be removed, and it has poor affordance because its
+      shape does not support the rotate-and-pry action. There is also no feedback when rotating, so users cannot tell
+      if they are doing it correctly.
+    </p>
+    <p>
+      Most people expect a small battery door, not the whole mirror face coming off, so the design does not match their
+      conceptual model.
+    </p>
+
+    <h4>Learnability, Efficiency, Safety</h4>
+    <ul>
+      <li><strong>Learnability:</strong> At first glance, it’s not clear how to access the battery compartment.</li>
+      <li><strong>Efficiency:</strong> Opening it takes multiple attempts and effort.</li>
+      <li><strong>Safety:</strong> Easy to scratch the mirror or pinch fingers while prying.</li>
+    </ul>
+
+    <h4>Fix</h4>
+    <p>
+      Use a simple screw-on cover instead of a rotate-and-pry system. A screw-on cover is easier to understand, easier to grip,
+      and safer to open. A textured edge would make it even better.</p> <p>At a minimum, a pull tab can be attached to the removable face plate so it can assit the user with removal.
+    </p>
+  </div>
+
+</body>
+</html>
